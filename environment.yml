@@ -1,0 +1,25 @@
+name: senproj-env
+channels:
+  - pytorch
+dependencies:
+  # Core dependencies
+  - python=3.7
+  - pytorch=1.0.*
+  - cuda100
+  - torchvision
+  - pandas
+  - pillow
+  - tqdm
+  - scikit-learn
+  # Visualization dependencies
+  - jupyter
+  - matplotlib
+  # Dev dependencies
+  - ipyparallel
+  - cython
+  - pytest
+  - pip:
+    - visdom # core dependency (but deprecated)
+    - gpustat
+    - lapsolver # core dependency
+    - pyxattr
