@@ -1,0 +1,120 @@
+/*
+CSS rules (Selectors) for CPSC 2330
+Author: Chuck Koontz
+Date: 1/31/2019
+*/
+
+
+/*ID Selectors*/
+
+
+
+
+#bottomHeader
+{
+   background-color: red;
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+   width: 85%;
+   margin: 0% 0% 0% 7%;
+   text-align: center;
+}
+#mainHeader
+{
+   background-color: red;
+   border-width: 1px;
+   border-style: solid;
+   border-color: black;
+   width: 85%;
+   margin: 0% 0% 0% 7%;
+   padding: 1% 0% 1% 0%;
+   text-align: center
+}
+
+#form
+{
+   text-align: center;
+}
+#table
+{
+   font-family: "Times New Roman", Times, serif;
+   font-size: 2rem; /*=16 * 1.5 px */
+   color: yellow;
+   width: 85%;
+   margin: 0% 0% 0% 7%;
+}
+#mainStory
+{
+   font-size: 1.5rem;
+   color: black;
+   text-align: justify;
+   background-color: green;
+   width: 85%;
+   margin: 0% 0% 0% 7%;
+
+}
+
+#asideStory
+{
+   font-size: 1.5rem;
+   color: black;
+   text-align: justify;
+   background-color: green;
+   width: 85%;
+   margin: 0% 0% 0% 7%;
+
+}
+
+/*Type Selectors*/
+
+h1
+{
+   font-family: "Times New Roman", Times, serif;
+   font-size: 50px;
+   color: yellow;
+   text-align: center;
+}
+map {
+   text-align: center;
+}
+p {
+   font-family: "Times New Roman", Times, serif;
+   font-size: 1.5rem; /*=16 * 1.5 px */
+   color: black;
+}
+
+body
+{
+   font-family: "Times New Roman", Times, serif;
+   margin: 3px;
+   color: black;
+   border-width:1px;
+   background-color:green;
+}
+
+a
+{
+   font-family: "Times New Roman", Times, serif;
+   font-size: 1.5rem; /*=16 * 1.5 px */
+   color: yellow;
+}
+table
+{
+   font-family: "Times New Roman", Times, serif;
+   font-size: 1.5rem; /*=16 * 1.5 px */
+   color: black;
+	text-align: center;
+	border: 2px solid black;
+ border-collapse: collapse;
+width: 85%;
+}
+th, td {
+  border: 2px solid black;
+ border-collapse: collapse;
+padding: 15px;
+}
+
+
+
+
