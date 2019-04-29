@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torchvision
 from torchvision import datasets, transforms, models
 from torch.autograd import Variable
+import subprocess
 
 data_dir = "./data/actual"
 input_size = 224
@@ -19,20 +20,24 @@ test_transforms = transforms.Compose([transforms.Resize(input_size),
 image_dataset = datasets.ImageFolder(data_dir, test_transforms)
 trainloader = torch.utils.data.DataLoader(image_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = torch.load('/home/jasayles/Comp-Vis-Tour/model.pth').to(device)
+model = torch.load('./model.pth',map_location='cpu')
 model.eval()
 
-classes = ['Byrum Hall', 'Decker Hall','Dunn Hall','Eternal Flame',
-           'Fine Arts','International Plaza','Hardacre Hall','Hartung Hall','Helios',
-           'Kardatzke Wellnes Center','Nicholson Library','Martin Hall','Morrison Hall',
-           'Myers Hall', 'OLT Student Center','Passages','Peace Pole','Centennial Prayer Labyrinth',
-           'Reardon Auditorium','Rice Hall','Pioneer Rock','Campus Seal','Smith Hall','Morrison Statue']
+classes = ['ByrumHall', 'DeckerHall','DunnHall','EternalFlame',
+           'FineArts','InternationalPlaza','HardacreHall','HartungHall','Helios',
+           'KardatzkeWellnessCenter','NicholsonLibrary','MartinHall','MorrisonHall',
+           'MyersHall', 'OLTStudentCenter','Passages','PeacePole','CentennialPrayerLabyrinth',
+           'ReardonAuditorium','RiceHall','PioneerRock','CampusSeal','SmithHall','MorrisonStatue']
 
 dataiter = iter(trainloader)
 images, labels = dataiter.next()
 
-outputs = model(images.to(device))
+outputs = model(images)
+sm = torch.nn.Softmax(dim=1)
+probs = sm(outputs)[0]
 _, predicted = torch.max(outputs, 1)
-
-print('Predicted class is {}:'.format(classes[predicted[0]]))
+maxx = probs[predicted].data[0]
+command = 'html/' + classes[predicted[0]] + '.html'
+subprocess.run(args=['cp',command, 'landmark.html'])
+subprocess.run(args=['rm', 'data/actual/environment/run.jpg'])
+print('\n{}, {}%\n'.format(classes[predicted[0]], maxx*100))
